@@ -1,5 +1,5 @@
 # YoutubePlayListDuration
-Calculate duration of Youtube playlist 
+Calculate duration of Youtube playlist \n
 Add code like snippet to Chrome Borwser
 
 Open the DevTools
