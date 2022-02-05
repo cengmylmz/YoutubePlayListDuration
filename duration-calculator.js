@@ -1,27 +1,26 @@
-function GetDuration()
+(()=>{
+    
+const videoList = document.querySelectorAll('ytd-playlist-video-renderer span.ytd-thumbnail-overlay-time-status-renderer');
+
+let sumHours = 0;
+let sumMinutes =0;
+let sumSeconds =0;
+for(let i=0;i<videoList.length;i++)
 {
-var array = $$('span.ytd-thumbnail-overlay-time-status-renderer')
-var sumHours = 0;
-var sumMminutes =0;
-var sumSeconds =0;
-for(let i=0;i<array.length;i++)
-{
-    var time =  array[i].innerText.split(":")
+    let time =  videoList[i].innerText.split(":")
     sumHours += time.length==3?parseInt(time[0]):0;    
-    sumMminutes += time.length==3?parseInt(time[1]):parseInt(time[0]);    
+    sumMinutes += time.length==3?parseInt(time[1]):parseInt(time[0]);    
     sumSeconds += time.length==3?parseInt(time[2]):parseInt(time[1]);    
 }
 
-var addToMinutes = parseInt(sumSeconds/60);
-sumMminutes += addToMinutes;
+let addToMinutes = parseInt(sumSeconds/60);
+sumMinutes += addToMinutes;
 sumSeconds -=  addToMinutes*60;
 
-var addToHours = parseInt(sumMminutes/60);
+let addToHours = parseInt(sumMinutes/60);
 sumHours += addToHours;
-sumMminutes =  sumMminutes%60;
-var result = sumHours+":"+sumMminutes+":"+sumSeconds; 
-console.log(result)
-alert(result)
-}
+sumMinutes %= 60;
+let result = sumHours+":"+sumMinutes+":"+sumSeconds; 
 
-GetDuration();
+alert(result)
+})();
